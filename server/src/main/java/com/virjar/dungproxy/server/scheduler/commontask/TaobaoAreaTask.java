@@ -28,7 +28,8 @@ import com.virjar.dungproxy.server.utils.SysConfig;
 @Component
 public class TaobaoAreaTask extends CommonTask {
 
-    private static final String TAOBAOURL = "http://ip.taobao.com/service/getIpInfo.php?ip=";
+    // private static final String TAOBAOURL = "http://ip.taobao.com/service/getIpInfo.php?ip=";
+    private static final String TAOBAOURL = "http://ip.taobao.com/outGetIpInfo?ip=ipAddr&accessKey=alibaba-inc";
 
     private static final Logger logger = LoggerFactory.getLogger(TaobaoAreaTask.class);
     private static final String DURATION = "common.task.duration.taobaoArea";
@@ -68,8 +69,9 @@ public class TaobaoAreaTask extends CommonTask {
             JSONObject jsonObject;
             String response = null;
             try {
-                response = HttpInvoker.get(TAOBAOURL + ipAddr);
-                logger.info("request url:{}", TAOBAOURL + ipAddr);
+                String requestUrl = TAOBAOURL.replace("ipAddr", ipAddr);
+                response = HttpInvoker.get(requestUrl);
+                logger.info("request url:{}", requestUrl);
                 if (StringUtils.isEmpty(response)) {
                     return null;
                 }
@@ -122,13 +124,13 @@ public class TaobaoAreaTask extends CommonTask {
         int maxTimes = 10;
 
         try {
-            int i =0;
+            int i = 0;
             List<Proxy> proxyList = find4Update();
             while (proxyList.size() > 0) {
                 i++;
                 doSyncAddress(proxyList);
                 proxyList = find4Update();
-                if(i > maxTimes){
+                if (i > maxTimes) {
                     return "";
                 }
             }
