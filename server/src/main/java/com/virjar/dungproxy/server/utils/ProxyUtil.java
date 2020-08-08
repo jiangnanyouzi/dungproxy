@@ -22,16 +22,17 @@ import com.virjar.dungproxy.server.model.ProxyModel;
 
 /**
  * ClassName:ProxyUtil
- * 
- * @see
+ *
  * @author ch
  * @version Ver 1.0
  * @Date 2014-2-16 下午04:20:07
+ * @see
  */
 public class ProxyUtil {
     private static final String keysourceurl = SysConfig.getInstance().getKeyverifyurl();
     private static InetAddress localAddr;
     private static final Logger logger = LoggerFactory.getLogger(ProxyUtil.class);
+
     static {
         init();
     }
@@ -62,7 +63,7 @@ public class ProxyUtil {
 
     /**
      * socket是否区分V4 & V5? 看javaAPI好像可以自动识别,那么其他API是否也应该能自动识别了?
-     * 
+     *
      * @param p
      * @return
      */
@@ -114,7 +115,7 @@ public class ProxyUtil {
         try {
             long start = System.currentTimeMillis();
             String response = HttpInvoker.get(keysourceurl + "?ip=" + p.getIp() + "&port=" + p.getPort(),
-                    new Header[] { Constant.CHECK_HEADER }, p.getIp(), p.getPort());
+                    new Header[]{Constant.CHECK_HEADER}, p.getIp(), p.getPort());
             if (StringUtils.isEmpty(response)) {
                 return null;
             }
@@ -151,7 +152,7 @@ public class ProxyUtil {
 
     /**
      * 可用性验证在本方法计算响应时间
-     * 
+     *
      * @param p 代理
      * @return
      */
@@ -173,13 +174,13 @@ public class ProxyUtil {
                 return null;
             }
             switch (type) {
-            case HTTP:
-            case HTTPHTTPS:
-                return httpCheck(p);
-            case SOCKET:
-                return socketCheck(p);
-            default:
-                return null;// 不会发生
+                case HTTP:
+                case HTTPHTTPS:
+                    return httpCheck(p);
+                case SOCKET:
+                    return socketCheck(p);
+                default:
+                    return null;// 不会发生
             }
         }
     }
@@ -217,6 +218,7 @@ public class ProxyUtil {
             return true;
         } catch (Exception e) {
             // 日志级别为debug,失败的IP数量非常多
+            logger.error("connect fail", e);
         } finally {
             IOUtils.closeQuietly(socket);
         }
