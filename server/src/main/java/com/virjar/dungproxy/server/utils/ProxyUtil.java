@@ -218,7 +218,7 @@ public class ProxyUtil {
             return true;
         } catch (Exception e) {
             // 日志级别为debug,失败的IP数量非常多
-            logger.error("connect fail", e);
+            logger.error("connect fail {} {}", p.getAddress().getHostAddress(), p.getPort(), e);
         } finally {
             IOUtils.closeQuietly(socket);
         }
