@@ -60,7 +60,7 @@ public class ProxyRestApiController {
 
     @RequestMapping(value = "/proxy", method = RequestMethod.POST)
     public ResponseEntity<ResponseEnvelope<Object>> createProxy(@RequestBody @Valid ProxyVO proxyVO,
-            BindingResult bindingResult) {
+                                                                BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
             return ReturnUtil.retException(ReturnCode.INPUT_PARAM_ERROR, errorMessage);
@@ -82,7 +82,7 @@ public class ProxyRestApiController {
 
     @RequestMapping(value = "/proxy/{id}", method = RequestMethod.PUT)
     public ResponseEntity<ResponseEnvelope<Object>> updateProxyByPrimaryKeySelective(@PathVariable Long id,
-            @RequestBody @Valid ProxyVO proxyVO, BindingResult bindingResult) {
+                                                                                     @RequestBody @Valid ProxyVO proxyVO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
             return ReturnUtil.retException(ReturnCode.INPUT_PARAM_ERROR, errorMessage);
@@ -99,7 +99,7 @@ public class ProxyRestApiController {
 
     @RequestMapping(value = "/proxy/list")
     public ResponseEntity<ResponseEnvelope<Object>> listProxys(@PageableDefault Pageable pageable, ProxyVO proxyVO,
-            BindingResult bindingResult) {
+                                                               BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
             return ReturnUtil.retException(ReturnCode.INPUT_PARAM_ERROR, errorMessage);
@@ -154,13 +154,13 @@ public class ProxyRestApiController {
 
     /**
      * 只能是json
-     * 
+     *
      * @param feedBackForm
      * @return
      */
     @RequestMapping("/feedBack")
     public ResponseEntity<ResponseEnvelope<Object>> feedBack(@RequestBody FeedBackForm feedBackForm,
-            BindingResult bindingResult) {
+                                                             BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             String errorMessage = bindingResult.getAllErrors().get(0).getDefaultMessage();
             return ReturnUtil.retException(ReturnCode.INPUT_PARAM_ERROR, errorMessage);
@@ -172,5 +172,10 @@ public class ProxyRestApiController {
     @RequestMapping("/allAv")
     public ResponseEntity<ResponseEnvelope<Object>> allAvailable() {
         return ReturnUtil.retSuccess(proxyService.allAvailable());
+    }
+
+    @RequestMapping("/allAvPage")
+    public ResponseEntity<ResponseEnvelope<Object>> allAvailablePage(@PageableDefault Pageable pageable) {
+        return ReturnUtil.retSuccess(proxyService.allAvailablePage(pageable));
     }
 }

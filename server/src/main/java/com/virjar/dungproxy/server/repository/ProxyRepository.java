@@ -26,8 +26,8 @@ public interface ProxyRepository {
     List<Proxy> selectPage(Proxy proxy, Pageable pageable);
 
     List<Proxy> getfromSlot(@Param(value = "start") int start, @Param(value = "end") int end,
-            @Param(value = "size") int size, @Param("timeColumnName") String timeColumnName,
-            @Param("scoreColumnName") String scoreColumnName, @Param("condition") String condition);
+                            @Param(value = "size") int size, @Param("timeColumnName") String timeColumnName,
+                            @Param("scoreColumnName") String scoreColumnName, @Param("condition") String condition);
 
     Integer getMaxScore(@Param("scoreName") String scoreName);
 
@@ -41,9 +41,11 @@ public interface ProxyRepository {
 
     List<Integer> getPortList();
 
-    List<Proxy> getLowProxy(@Param("step") int step,@Param("threshold") int threshold,@Param("page") Pageable pageable);
+    List<Proxy> getLowProxy(@Param("step") int step, @Param("threshold") int threshold, @Param("page") Pageable pageable);
 
     List<Proxy> selectByIds(@Param("ids") List<Long> ids);
 
     Long deleteBatch(@Param("ids") List<Long> ids);
+
+    List<Proxy> findAvailablePage(@Param("page") Pageable pageable);
 }

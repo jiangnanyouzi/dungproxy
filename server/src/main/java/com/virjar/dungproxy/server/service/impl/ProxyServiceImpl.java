@@ -239,7 +239,7 @@ public class ProxyServiceImpl implements ProxyService {
         ret.addAll(proxyRepo.getfromSlot((slot - 1) * frame, maxScore, needsize, "connection_score_date",
                 "connection_score", null));
 
-        logger.info("连接可用检查,待检查的不可用资源数目:{}",ret.size());
+        logger.info("连接可用检查,待检查的不可用资源数目:{}", ret.size());
         // 无效资源选取
         if (minScore > (-SysConfig.getInstance().getConnectionSlotNumber())) {
             frame = 1;
@@ -258,7 +258,7 @@ public class ProxyServiceImpl implements ProxyService {
         }
         ret.addAll(proxyRepo.getfromSlot(minScore, (slot - 1) * -frame, needsize, "connection_score_date",
                 "connection_score", null));
-        logger.info("连接可用检查,待检查的资源数目:{}",ret.size());
+        logger.info("连接可用检查,待检查的资源数目:{}", ret.size());
         return beanMapper.mapAsList(ret, ProxyModel.class);
     }
 
@@ -291,5 +291,11 @@ public class ProxyServiceImpl implements ProxyService {
 
     public List<ProxyModel> allAvailable() {
         return beanMapper.mapAsList(proxyRepo.findAvailable(), ProxyModel.class);
+    }
+
+
+    @Transactional(readOnly = true)
+    public List<ProxyModel> allAvailablePage(Pageable pageable) {
+        return beanMapper.mapAsList(proxyRepo.findAvailablePage(pageable), ProxyModel.class);
     }
 }

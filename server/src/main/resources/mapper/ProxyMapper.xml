@@ -656,4 +656,15 @@
             #{id,jdbcType=BIGINT}
         </foreach>
     </delete>
+
+    <select id="findAvailablePage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from proxy
+        where availbel_score >1 and connection_score >1
+        <if test="page.offset >= 0 and page.pageSize > 0">
+            limit ${page.offset}, ${page.pageSize}
+        </if>
+    </select>
+
 </mapper>

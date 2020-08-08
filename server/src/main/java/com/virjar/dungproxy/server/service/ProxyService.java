@@ -32,4 +32,6 @@ public interface ProxyService {
     ProxyModel selectByIpPort(String ip, int port);
 
     public List<ProxyModel> allAvailable();
+
+    public List<ProxyModel> allAvailablePage(Pageable Pageable);
 }
