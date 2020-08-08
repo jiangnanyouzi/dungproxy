@@ -214,7 +214,7 @@ public class ProxyUtil {
         }
         try {
             InetSocketAddress endpointSocketAddr = new InetSocketAddress(p.getAddress().getHostAddress(), p.getPort());
-            socket.connect(endpointSocketAddr, 4000);
+            socket.connect(endpointSocketAddr, 10000);
             return true;
         } catch (Exception e) {
             // 日志级别为debug,失败的IP数量非常多
