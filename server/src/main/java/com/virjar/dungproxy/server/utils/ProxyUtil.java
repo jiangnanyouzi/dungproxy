@@ -43,7 +43,9 @@ public class ProxyUtil {
             try (final DatagramSocket socket = new DatagramSocket()) {
                 socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
                 String ip = socket.getLocalAddress().getHostAddress();
+                logger.info("============================");
                 logger.info("local IP :" + ip + socket.getLocalAddress());
+                logger.info("============================");
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }
