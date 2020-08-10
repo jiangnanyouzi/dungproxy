@@ -53,6 +53,16 @@ public class ProxyUtil {
                     }
                 }
             }
+            try (final DatagramSocket socket = new DatagramSocket()) {
+                socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+
+                socket.getLocalAddress();
+                String ip = socket.getLocalAddress().getHostAddress();
+                logger.info("local IP {} {}", ip, localAddr.getHostAddress());
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+
 
         } catch (Exception e) {
             logger.error("Failure when init ProxyUtil", e);
