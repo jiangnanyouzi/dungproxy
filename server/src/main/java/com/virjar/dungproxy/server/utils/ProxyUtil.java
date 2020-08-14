@@ -40,17 +40,18 @@ public class ProxyUtil {
     private static void init() {
         Enumeration<InetAddress> localAddrs;
         try {
-            try (final DatagramSocket socket = new DatagramSocket()) {
-                socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
-                localAddr = socket.getLocalAddress();
-                logger.info("============================");
-                logger.info("local IP {} {}",  socket.getLocalAddress().getHostAddress(), socket.getLocalAddress());
-                logger.info("============================");
-                return;
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            }
-
+            /*
+                try (final DatagramSocket socket = new DatagramSocket()) {
+                    socket.connect(InetAddress.getByName("8.8.8.8"), 10002);
+                    localAddr = socket.getLocalAddress();
+                    logger.info("============================");
+                    logger.info("local IP {} {}",  socket.getLocalAddress().getHostAddress(), socket.getLocalAddress());
+                    logger.info("============================");
+                    return;
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
+            */
             Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
             while (networkInterfaces.hasMoreElements()) {
                 NetworkInterface ni = networkInterfaces.nextElement();
