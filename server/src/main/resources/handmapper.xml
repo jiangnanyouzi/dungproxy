@@ -107,6 +107,7 @@
         <enable>true</enable>
 
     </maper>
+    <!--
     <maper>
         <website>http://www.3464.com/data/Proxy/http/</website>
         <fetcher>/fetcher/www_3464_com.xml</fetcher>
@@ -137,6 +138,7 @@
         <enable>true</enable>
         <successKey>66免费代理ip</successKey>
     </maper>
+    -->
     <maper>
         <website>http://www.cool-proxy.net/proxies/http_proxy_list/sort:score/direction:desc
         </website>
@@ -189,7 +191,7 @@
         <enable>true</enable>
         <successKey>表中响应速度是中国测速服务器的测试数据</successKey>
     </maper>
-    <maper>
+    <!--<maper>
         <website>http://www.kuaidaili.com/</website>
         <fetcher>/fetcher/www_kuaidaili_com.xml</fetcher>
         <batchsize>1000</batchsize>
@@ -208,7 +210,7 @@
         </wildcardgenerator>
         <enable>true</enable>
         <successKey>表中响应速度是中国测速服务器的测试数据</successKey>
-    </maper>
+    </maper>-->
     <maper>
         <website>http://www.mrhinkydink.com/proxies.htm</website>
         <fetcher>/fetcher/www_mrhinkydink_com.xml</fetcher>
@@ -219,7 +221,7 @@
         <enable>true</enable>
         <successKey>this.style.backgroundColor</successKey>
     </maper>
-    <maper>
+  <!--  <maper>
         <website>http://www.nianshao.me/</website>
         <fetcher>/fetcher/www_nianshao_me.xml</fetcher>
         <wildcardgenerator>http://www.nianshao.me/?stype=1&amp;page=#{autoincreament}
@@ -249,7 +251,7 @@
         <hierate>1h</hierate>
         <enable>true</enable>
         <maxPage>100</maxPage>
-    </maper>
+    </maper>-->
     <maper>
         <!-- 暂时不可访问 -->
         <website>http://www.proxy.com.ru/</website>
@@ -277,6 +279,7 @@
         <hierate>1h</hierate>
         <batchsize>5</batchsize>
     </maper>
+  <!--
     <maper>
         <website>http://www.xicidaili.com/</website>
         <fetcher>/fetcher/www_xici_net_co.xml</fetcher>
@@ -327,6 +330,7 @@
         <enable>true</enable>
         <successKey>西刺免费代理IP</successKey>
     </maper>
+    -->
     <maper>
         <website>http://www.xroxy.com/proxylist.htm</website>
         <fetcher>/fetcher/www_xroxy_com.xml</fetcher>
@@ -354,7 +358,7 @@
         <maxPage>10</maxPage>
     </maper>
 
-    <maper>
+    <!--<maper>
         <website>http://www.iphai.com/</website>
         <fetcher>/fetcher/www_iphai_com.xml</fetcher>
         <classgenerator>com.virjar.dungproxy.server.crawler.urlgenerator.IphaiURLGenerator</classgenerator>
@@ -362,10 +366,10 @@
         <hierate>1h</hierate>
         <enable>true</enable>
         <successKey>ip代理软件</successKey>
-    </maper>
+    </maper>-->
 
 
-    <maper>
+    <!--<maper>
         <website>http://www.swei360.com/</website>
         <fetcher>/fetcher/www_swei360_com.xml</fetcher>
         <wildcardgenerator>http://www.swei360.com/?page=#{autoincreament}</wildcardgenerator>
@@ -408,9 +412,9 @@
         <enable>true</enable>
         <successKey>360三维代理</successKey>
         <maxPage>7</maxPage>
-    </maper>
+    </maper>-->
 
-    <maper>
+   <!-- <maper>
         <website>http://www.httpsdaili.com/</website>
         <fetcher>/fetcher/www_httpsdaili_com.xml</fetcher>
         <wildcardgenerator>
@@ -422,7 +426,6 @@
         <successKey>瑶瑶代理ip</successKey>
         <maxPage>30</maxPage>
     </maper>
-
     <maper>
         <website>http://www.httpsdaili.com/</website>
         <fetcher>/fetcher/www_httpsdaili_com.xml</fetcher>
@@ -435,7 +438,6 @@
         <successKey>瑶瑶代理ip</successKey>
         <maxPage>30</maxPage>
     </maper>
-
     <maper>
         <website>http://www.httpsdaili.com/</website>
         <fetcher>/fetcher/www_httpsdaili_com.xml</fetcher>
@@ -458,7 +460,7 @@
         <enable>true</enable>
         <successKey>瑶瑶代理ip</successKey>
         <maxPage>30</maxPage>
-    </maper>
+    </maper>-->
 
 
     <!-- 等图片验证码模块完成 -->
@@ -473,7 +475,7 @@
         <enable>false</enable>
     </maper>
 
-    <maper>
+   <!-- <maper>
         <website>http://www.bigdaili.com/ipList/2.html#ip</website>
         <fetcher>/fetcher/www_bigdaili_com.xml</fetcher>
         <wildcardgenerator>
@@ -483,6 +485,20 @@
         <hierate>3h</hierate>
         <enable>true</enable>
         <successKey>逼格代理IP</successKey>
+    </maper>-->
+    <maper>
+        <website>https://ip.jiangxianli.com/</website>
+        <fetcher>/fetcher/ip_jiangxianli_com.xml</fetcher>
+        <wildcardgenerator>
+            <![CDATA[
+        https://ip.jiangxianli.com/?page=#{autoincreament}
+        ]]>
+        </wildcardgenerator>
+        <batchsize>150</batchsize>
+        <enable>true</enable>
+        <maxPage>14</maxPage>
+        <hierate>30m</hierate>
+        <successKey>高可用全球免费代理IP库</successKey>
     </maper>
 
 </handmapers>
