@@ -3,8 +3,11 @@ package com.virjar.dungproxy.server.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +34,7 @@ import com.virjar.dungproxy.server.utils.Tranparent;
 @Controller
 @RequestMapping("/proxyipcenter")
 public class CheckController {
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Resource
     private ProxyService proxyService;
@@ -72,6 +76,7 @@ public class CheckController {
                 proxyService.createSelective(beanMapper.map(proxy, ProxyModel.class));
             }
         }
+        logger.info("ip {}:{}", ip, port);
         return ReturnUtil.retSuccess(availbelCheckResponse);
     }
 
