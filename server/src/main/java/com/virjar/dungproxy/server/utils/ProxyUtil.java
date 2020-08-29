@@ -123,7 +123,6 @@ public class ProxyUtil {
 
     private static AvailbelCheckResponse httpCheck(ProxyModel p) {
         try {
-            logger.info("proxy {}:{}" , p.getIp(), p.getPort());
             long start = System.currentTimeMillis();
             String response = HttpInvoker.get(keysourceurl + "?ip=" + p.getIp() + "&port=" + p.getPort(),
                     new Header[]{Constant.CHECK_HEADER}, p.getIp(), p.getPort());
@@ -137,7 +136,7 @@ public class ProxyUtil {
                 availbelCheckResponse.setType(ProxyType.HTTP.getType());
                 return availbelCheckResponse;
             } else if (StringUtils.isNotBlank(response) && SysConfig.getInstance().recordFaildResponse()) {
-                logger.info("checker error response is {}", response);
+                logger.info("proxy {}:{}, checker error response is {}", p.getIp(), p.getPort(), response);
             }
         } catch (Exception e) {
             // doNothing
