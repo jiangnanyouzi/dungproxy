@@ -35,9 +35,13 @@ public class BalanceTask extends CommonTask {
 
 
     private static final String DURATION = "common.task.duration.balanceTask";
+    private static final String STEP = "common.task.duration.balanceTask.step";
+    private static final String THRESHOLD = "common.task.duration.balanceTask.threshold";
 
     public BalanceTask() {
         super(NumberUtils.toInt(SysConfig.getInstance().get(DURATION), 176400000));
+        Constant.STEP = NumberUtils.toInt(SysConfig.getInstance().get(STEP), Constant.STEP);
+        Constant.THRESHOLD = NumberUtils.toInt(SysConfig.getInstance().get(THRESHOLD), Constant.THRESHOLD);
     }
 
     private boolean insertAndDelete(int step, int threshold) {
@@ -62,7 +66,7 @@ public class BalanceTask extends CommonTask {
 
     @Override
     public Object execute() {
-        logger.info("begin migrate data....");
+        logger.info("Constant.STEP {} , Constant.THRESHOLD {},begin migrate data....", Constant.STEP, Constant.THRESHOLD);
         boolean result = insertAndDelete(Constant.STEP, Constant.THRESHOLD);
         logger.info("end migrate data result = " + result);
         return result;
