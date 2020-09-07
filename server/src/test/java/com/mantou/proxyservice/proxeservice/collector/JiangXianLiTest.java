@@ -1,9 +1,12 @@
 package com.mantou.proxyservice.proxeservice.collector;
 
 import com.alibaba.fastjson.JSONObject;
+import com.virjar.dungproxy.client.httpclient.HttpInvoker;
 import com.virjar.dungproxy.server.crawler.TemplateBuilder;
 import com.virjar.dungproxy.server.crawler.impl.TemplateCollector;
 import com.virjar.dungproxy.server.entity.Proxy;
+import com.virjar.dungproxy.server.utils.Constant;
+import org.apache.http.Header;
 
 import java.util.List;
 
@@ -12,8 +15,10 @@ import java.util.List;
  */
 public class JiangXianLiTest {
     public static void main(String[] args) {
-        TemplateCollector templateCollector = TemplateBuilder.buildfromSource("/handmapper_jiangxianli.xml").get(0);
+        // String source = "//handmapper_jiangxianli.xml";
+        String source = "/handmapper_proxylistplus.xml";
+        TemplateCollector templateCollector = TemplateBuilder.buildfromSource(source).get(0);
         List<Proxy> proxies = templateCollector.doCollect();
-        System.out.println(JSONObject.toJSONString(proxies));
+        System.out.println(proxies.size());
     }
 }

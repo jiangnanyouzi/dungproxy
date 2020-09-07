@@ -164,7 +164,7 @@
     <maper>
         <website>http://www.kuaidaili.com/</website>
         <fetcher>/fetcher/www_kuaidaili_com.xml</fetcher>
-        <batchsize>600</batchsize>
+        <batchsize>100</batchsize>
         <hierate>10m</hierate>
         <wildcardgenerator>http://www.kuaidaili.com/proxylist/#{autoincreament}/
         </wildcardgenerator>
@@ -174,7 +174,7 @@
     <maper>
         <website>http://www.kuaidaili.com/</website>
         <fetcher>/fetcher/www_kuaidaili_com.xml</fetcher>
-        <batchsize>1000</batchsize>
+        <batchsize>100</batchsize>
         <hierate>1h</hierate>
         <wildcardgenerator>http://www.kuaidaili.com/free/inha/#{autoincreament}/
         </wildcardgenerator>
@@ -184,7 +184,7 @@
     <maper>
         <website>http://www.kuaidaili.com/</website>
         <fetcher>/fetcher/www_kuaidaili_com.xml</fetcher>
-        <batchsize>1000</batchsize>
+        <batchsize>100</batchsize>
         <hierate>1h</hierate>
         <wildcardgenerator>http://www.kuaidaili.com/free/intr/#{autoincreament}/
         </wildcardgenerator>
@@ -497,8 +497,23 @@
         <batchsize>150</batchsize>
         <enable>true</enable>
         <maxPage>14</maxPage>
-        <hierate>30m</hierate>
+        <hierate>20m</hierate>
         <successKey>高可用全球免费代理IP库</successKey>
+    </maper>
+
+    <maper>
+        <website>https://list.proxylistplus.com/</website>
+        <fetcher>/fetcher/list_proxylistplus_com.xml</fetcher>
+        <wildcardgenerator>
+            <![CDATA[
+        https://list.proxylistplus.com/Fresh-HTTP-Proxy-List-#{autoincreament}
+        ]]>
+        </wildcardgenerator>
+        <batchsize>300</batchsize>
+        <enable>true</enable>
+        <maxPage>6</maxPage>
+        <hierate>20m</hierate>
+        <successKey>proxylistplus</successKey>
     </maper>
 
 </handmapers>
