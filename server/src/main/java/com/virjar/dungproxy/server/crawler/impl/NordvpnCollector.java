@@ -17,7 +17,7 @@ import com.virjar.dungproxy.server.entity.Proxy;
  * 站点不可用
  * Created by virjar on 16/11/26.
  */
-@Component
+// @Component
 public class NordvpnCollector extends AutoDownloadCollector {
     private String lastUrl;
 
