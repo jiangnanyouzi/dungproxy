@@ -21,9 +21,11 @@ import com.virjar.dungproxy.server.crawler.NewCollector;
 import com.virjar.dungproxy.server.entity.Proxy;
 
 /**
+ * @deprecated
+ * 站点不可用
  * Created by virjar on 16/11/26.
  */
-@Component
+// @Component
 public class YouDailiCollector extends NewCollector {
     private static final Logger logger = LoggerFactory.getLogger(YouDailiCollector.class);
     private static Pattern ipAndPortPattern = Pattern.compile(

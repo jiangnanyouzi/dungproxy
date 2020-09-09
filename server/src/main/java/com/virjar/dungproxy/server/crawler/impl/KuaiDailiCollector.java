@@ -16,6 +16,7 @@ import com.virjar.dungproxy.server.crawler.NewCollector;
 import com.virjar.dungproxy.server.entity.Proxy;
 
 /**
+ * @deprecated 站点不可用
  * Created by virjar on 17/3/19.
  */
 //@Component

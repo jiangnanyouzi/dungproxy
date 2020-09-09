@@ -12,9 +12,10 @@ import com.virjar.dungproxy.server.crawler.AutoDownloadCollector;
 import com.virjar.dungproxy.server.entity.Proxy;
 
 /**
+ * @deprecated 站点不可用
  * Created by virjar on 16/11/27.
  */
-@Component
+// @Component
 public class SamairRuCollector extends AutoDownloadCollector {
     private static Pattern ipAndPortPattern = Pattern.compile(
             "(([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}):(\\d+)");

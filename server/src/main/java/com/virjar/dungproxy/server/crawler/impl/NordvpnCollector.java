@@ -13,6 +13,8 @@ import com.virjar.dungproxy.server.crawler.AutoDownloadCollector;
 import com.virjar.dungproxy.server.entity.Proxy;
 
 /**
+ * @deprecated
+ * 站点不可用
  * Created by virjar on 16/11/26.
  */
 @Component
