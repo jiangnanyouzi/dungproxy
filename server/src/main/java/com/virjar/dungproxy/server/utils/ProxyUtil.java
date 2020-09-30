@@ -123,6 +123,7 @@ public class ProxyUtil {
 
     private static AvailbelCheckResponse httpCheck(ProxyModel p) {
         try {
+
             long start = System.currentTimeMillis();
             String response = HttpInvoker.get(keysourceurl + "?ip=" + p.getIp() + "&port=" + p.getPort(),
                     new Header[]{Constant.CHECK_HEADER}, p.getIp(), p.getPort());

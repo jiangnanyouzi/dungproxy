@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handmapers>
+    <maper>
+        <website>https://www.proxynova.com/proxy-server-list/</website>
+        <fetcher>/fetcher/www_proxynova_com.xml</fetcher>
+        <wildcardgenerator>
+            <![CDATA[
+        https://www.proxynova.com/proxy-server-list/
+        ]]>
+        </wildcardgenerator>
+        <batchsize>10</batchsize>
+        <enable>true</enable>
+        <maxPage>1</maxPage>
+        <hierate>60m</hierate>
+        <successKey>Free Proxy List</successKey>
+    </maper>
+</handmapers>

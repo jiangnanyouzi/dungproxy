@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<handmapers>
+    <maper>
+        <website>http://nntime.com</website>
+        <fetcher>/fetcher/www_proxynova_com.xml</fetcher>
+        <wildcardgenerator>
+            <![CDATA[
+       http://nntime.com/proxy-list-0#{autoincreament}.htm
+        ]]>
+        </wildcardgenerator>
+        <batchsize>280</batchsize>
+        <enable>true</enable>
+        <maxPage>9</maxPage>
+        <hierate>60m</hierate>
+        <successKey>Free Proxy List</successKey>
+    </maper>
+</handmapers>

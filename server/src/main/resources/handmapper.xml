@@ -55,8 +55,8 @@
     <maper>
         <website>http://www.kuaidaili.com/</website>
         <fetcher>/fetcher/www_kuaidaili_com.xml</fetcher>
-        <batchsize>100</batchsize>
-        <hierate>10m</hierate>
+        <batchsize>60</batchsize>
+        <hierate>1h</hierate>
         <wildcardgenerator>http://www.kuaidaili.com/ops/proxylist/#{autoincreament}/
         </wildcardgenerator>
         <enable>true</enable>
@@ -65,7 +65,7 @@
     <maper>
         <website>http://www.kuaidaili.com/</website>
         <fetcher>/fetcher/www_kuaidaili_com.xml</fetcher>
-        <batchsize>90</batchsize>
+        <batchsize>60</batchsize>
         <hierate>1h</hierate>
         <wildcardgenerator>http://www.kuaidaili.com/free/inha/#{autoincreament}/
         </wildcardgenerator>
