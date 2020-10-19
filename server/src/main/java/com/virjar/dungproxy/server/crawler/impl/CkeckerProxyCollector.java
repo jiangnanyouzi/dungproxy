@@ -20,22 +20,23 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @deprecated
+ *
  * Created by virjar on 16/11/26.
  */
-// @Component
-public class PubProxyCollector extends NewCollector {
-    private static final Logger logger = LoggerFactory.getLogger(PubProxyCollector.class);
+@Component
+public class CkeckerProxyCollector extends NewCollector {
+    private static final Logger logger = LoggerFactory.getLogger(CkeckerProxyCollector.class);
     private static final Pattern ipAndPortPattern = Pattern.compile(
             "(([1-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}):(\\d+)");
 
-    public PubProxyCollector() {
+    public CkeckerProxyCollector() {
         setDuration(24 * 60);
     }
 
     @Override
     public String lasUrl() {
-        return "http://pubproxy.com/api/proxy?limit=20&format=json";
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        return "https://checkerproxy.net/api/archive/" + format.format(new Date());
     }
 
     @Override
@@ -47,7 +48,7 @@ public class PubProxyCollector extends NewCollector {
 
     private List<Proxy> processLink(String url) {
         List<Proxy> ret = Lists.newArrayList();
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 3; i++) {
             try {
                 String s = HttpInvoker.get(url);
                 if (StringUtils.isEmpty(s)) {
@@ -55,15 +56,20 @@ public class PubProxyCollector extends NewCollector {
                 }
                 JSONArray root = JSON.parseArray(s);
                 for (int j = 0, size = root.size(); j < size; j++) {
-                    String ip = root.getJSONObject(j).getString("ip");
-                    String port = root.getJSONObject(j).getString("port");
-                    Proxy proxy = new Proxy();
-                    proxy.setIp(ip);
-                    proxy.setPort(NumberUtils.toInt(port, 80));
-                    proxy.setConnectionScore(0L);
-                    proxy.setAvailbelScore(0L);
-                    proxy.setSource(lasUrl());
-                    ret.add(proxy);
+
+                    String addr = root.getJSONObject(j).getString("addr");
+                    Matcher matcher = ipAndPortPattern.matcher(addr);
+                    while (matcher.find()) {
+                        String ip = matcher.group(1);
+                        Integer port = NumberUtils.toInt(matcher.group(4));
+                        Proxy proxy = new Proxy();
+                        proxy.setIp(ip);
+                        proxy.setPort(port);
+                        proxy.setConnectionScore(0L);
+                        proxy.setAvailbelScore(0L);
+                        proxy.setSource(lasUrl());
+                        ret.add(proxy);
+                    }
                 }
                 return ret;
             } catch (Exception e) {
@@ -76,7 +82,7 @@ public class PubProxyCollector extends NewCollector {
 
 
     public static void main(String[] args) {
-        List<Proxy> proxies = new PubProxyCollector().doCollect();
+        List<Proxy> proxies = new CkeckerProxyCollector().doCollect();
         System.out.println(JSONObject.toJSONString(proxies));
     }
 }
